@@ -1,6 +1,6 @@
 import { Component, signal, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { IonContent, IonButton, IonCard, IonHeader, IonToolbar, IonTitle, IonIcon, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonText, IonFabButton } from '@ionic/angular/standalone';
+import { IonContent, IonButton, IonCard, IonHeader, IonToolbar, IonTitle, IonIcon, IonCardContent, IonFabButton } from '@ionic/angular/standalone';
 import { PaymentService } from '../../../core/application/services/payment.service';
 import { addIcons } from 'ionicons';
 import { walletOutline, qrCodeOutline, storefrontOutline, scanOutline, star, closeOutline } from 'ionicons/icons';
@@ -8,7 +8,7 @@ import { walletOutline, qrCodeOutline, storefrontOutline, scanOutline, star, clo
 @Component({
   selector: 'app-pay',
   standalone: true,
-  imports: [IonContent, IonButton, IonCard, IonHeader, IonToolbar, IonTitle, IonIcon, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonText, IonFabButton, CurrencyPipe],
+  imports: [IonContent, IonButton, IonCard, IonHeader, IonToolbar, IonTitle, IonIcon, IonCardContent, IonFabButton, CurrencyPipe],
   templateUrl: './pay.component.html',
   styleUrl: './pay.component.css'
 })
