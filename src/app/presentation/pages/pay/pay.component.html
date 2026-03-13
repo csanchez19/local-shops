@@ -1,0 +1,92 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="custom-toolbar">
+    <ion-title class="app-title">Barrio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-content">
+  <div class="content-wrapper">
+    
+    <div class="header-section">
+      <div class="user-greeting">
+        <h2>Hola, <span class="highlight">{{ paymentService.user()?.name || 'Vecino' }}</span> 👋</h2>
+        <p>Tu barrio te necesita hoy.</p>
+      </div>
+      <div class="user-avatar">
+        <img src="https://api.dicebear.com/7.x/notionists/svg?seed={{ paymentService.user()?.name || 'Vecino' }}&backgroundColor=ffd5dc" alt="User avatar" />
+      </div>
+    </div>
+
+    <ion-card class="wallet-card-premium">
+      <div class="card-glow"></div>
+      <ion-card-content>
+        <div class="wallet-top">
+          <div class="wallet-badge">
+            <ion-icon name="star"></ion-icon>
+            Puntos Acumulados
+          </div>
+          <ion-icon name="wallet-outline" class="wallet-icon"></ion-icon>
+        </div>
+        
+        <div class="points-display">
+          <span class="currency-symbol">B.</span>
+          <span class="points-value">{{ paymentService.totalPoints() }}</span>
+        </div>
+        
+        <div class="wallet-bottom">
+          <p>Equivalente a <b>{{ paymentService.totalPoints() / 10 | currency:'EUR' }}</b> aprox.</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="action-section">
+      @if (!qrGenerated()) {
+        <div class="idle-state">
+          <div class="icon-pulse-wrapper">
+            <div class="pulse-ring"></div>
+            <div class="pulse-ring delay-1"></div>
+            <ion-fab-button class="main-scan-btn" (click)="showMyQR()">
+              <ion-icon name="qr-code-outline"></ion-icon>
+            </ion-fab-button>
+          </div>
+          
+          <div class="action-text">
+            <h3>Pagar en local</h3>
+            <p>Muestra tu código QR en cualquier comercio adherido de tu ciudad.</p>
+          </div>
+        </div>
+      } @else {
+        <ion-card class="qr-active-card">
+          <div class="close-btn-wrapper">
+            <ion-button fill="clear" color="medium" (click)="closeQR()">
+              <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+          </div>
+          <ion-card-content class="qr-code-view">
+            <div class="user-id-badge">ID: BARRIO-XX99</div>
+            
+            <div class="mock-qr-premium" [class.scanning]="isScanning()">
+              <div class="scan-line"></div>
+              <div class="qr-pattern"></div>
+              <div class="qr-corners-premium">
+                <span class="c-tl"></span><span class="c-tr"></span>
+                <span class="c-bl"></span><span class="c-br"></span>
+              </div>
+            </div>
+            
+            <h3 class="qr-title">Código listo</h3>
+            <p class="qr-desc">
+              @if (isScanning()) {
+                <span class="waiting-text">Esperando al comercio...</span>
+              } @else {
+                Acerca este código al vendedor para completar el pago.
+              }
+            </p>
+          </ion-card-content>
+        </ion-card>
+      }
+    </div>
+
+  </div>
+</ion-content>
+

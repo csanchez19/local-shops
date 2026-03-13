@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Historial</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="history-header">
+    <h2>Tus Compras</h2>
+    <p>Cada compra apoya a tu barrio.</p>
+  </div>
+
+  <ion-list lines="full" class="history-list">
+    @for (tx of paymentService.transactions(); track tx.id) {
+      <ion-item class="transaction-item">
+        <ion-avatar slot="start" class="shop-avatar">
+           <div class="avatar-emoji">{{ getShopImage(tx.commerceName) }}</div>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ tx.commerceName }}</h2>
+          <p>{{ parseDate(tx.timestamp) | date:'dd MMM yyyy, HH:mm' }}</p>
+        </ion-label>
+        <ion-note slot="end" class="transaction-meta">
+          <div class="amount">{{ tx.amount | currency:'EUR' }}</div>
+          @if (tx.pointsEarned > 0) {
+            <div class="points-badge">
+              <ion-icon name="star"></ion-icon>
+              +{{ tx.pointsEarned }} pts
+            </div>
+          }
+        </ion-note>
+      </ion-item>
+    } @empty {
+      <div class="empty-state">
+        <div class="empty-icon">🏪</div>
+        <h3>Aún no hay compras</h3>
+        <p>¡Apoya a los comercios de tu zona para empezar a acumular puntos!</p>
+      </div>
+    }
+  </ion-list>
+</ion-content>

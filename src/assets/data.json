@@ -1,0 +1,58 @@
+{
+  "user": {
+    "name": "María",
+    "totalPoints": 45
+  },
+  "shops": [
+    {
+      "id": "shop-1",
+      "name": "Panadería Paco",
+      "category": "Alimentación",
+      "image": "🥖"
+    },
+    {
+      "id": "shop-2",
+      "name": "Frutería Manoli",
+      "category": "Alimentación",
+      "image": "🍎"
+    },
+    {
+      "id": "shop-3",
+      "name": "Librería Cervantes",
+      "category": "Ocio",
+      "image": "📚"
+    },
+    {
+      "id": "shop-4",
+      "name": "Cafetería La Plaza",
+      "category": "Hostelería",
+      "image": "☕"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TX-A1B2C3",
+      "amount": 12.50,
+      "commerceName": "Panadería Paco",
+      "timestamp": "2024-05-20T09:30:00Z",
+      "status": "completed",
+      "pointsEarned": 1
+    },
+    {
+      "id": "TX-X9Y8Z7",
+      "amount": 45.00,
+      "commerceName": "Librería Cervantes",
+      "timestamp": "2024-05-18T17:15:00Z",
+      "status": "completed",
+      "pointsEarned": 4
+    },
+    {
+      "id": "TX-M3N4P5",
+      "amount": 8.25,
+      "commerceName": "Frutería Manoli",
+      "timestamp": "2024-05-15T11:00:00Z",
+      "status": "completed",
+      "pointsEarned": 0
+    }
+  ]
+}
